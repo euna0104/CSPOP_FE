@@ -9,6 +9,7 @@ import NoticeWrite from './Notice/NoticeWrite';
 import NoticeUpdate from './Notice/NoticeUpdate';
 import Guide from './Guide';
 import Schedule from './Schedule';
+import GraduationList from './GraduationList';
 
 import './App.css';
 
@@ -35,6 +36,8 @@ const App = () => {
         <Route path="/api/graduation/guide" element={<Guide />} />
         {/* 진행일정 화면 */}
         <Route path="/api/graduation/schedule" element={<Schedule />} />
+        {/* 졸업자 조회 화면 */}
+        <Route path="/api/graduation/graduate_management" element={<GraduationList />} />
       </Routes>
     </Router>
   );
