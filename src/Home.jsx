@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 const Home = () => {
   const StyledDiv = styled.div`
+    font-family: 'Nanum Gothic';
+
     .p-lg-8 {
         padding: 3.5rem!important;
     }

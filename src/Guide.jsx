@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './App.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Common/Header';
@@ -18,6 +19,8 @@ const Guide = ({ userId }) => {
   }, []);
 
   const StyledDiv = styled.div`
+    font-family: 'Nanum Gothic';
+
     .bg-dark {
       --bs-bg-opacity: 1;
       background-color: rgb(38,31,68) !important;
@@ -47,7 +50,7 @@ const Guide = ({ userId }) => {
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-12">
                 <div className="py-lg-14 py-12 text-center mb-4" style={{ padding: '50px 0' }}>
-                  <h4 className="text-white display-4 mb-3">안내 및 내규</h4>
+                  <h6 className="text-white display-4 mb-3">안내 및 내규</h6>
                 </div>
               </div>
             </div>
