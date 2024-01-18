@@ -1,21 +1,30 @@
 import { useNavigate, Link } from 'react-router-dom';
 import React from 'react';
+import styled from 'styled-components';
 
 const Header = () => {
   const navigate = useNavigate();
+
+  const StyledDiv = styled.div`
+      .bg-dark {
+        --bs-bg-opacity: 1;
+        background-color: rgb(38,31,68) !important;
+      }
+    `;
 
   const handleHomeClick = () => {
     navigate('/api/home');
   };
 
   const linkStyles = {
-      color: 'white',
-      fontWeight: 'bold'
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: '18px'
   };
 
   return (
+    <StyledDiv>
     <div className="header position-sticky border-3 border-top border-primary bg-dark">
-      {/* navigation start */}
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-default">
           <a className="navbar-brand" onClick={handleHomeClick}>
@@ -47,8 +56,8 @@ const Header = () => {
           </div>
         </nav>
       </div>
-      {/* navigation close */}
     </div>
+    </StyledDiv>
   );
 };
 
