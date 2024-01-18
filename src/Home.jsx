@@ -102,8 +102,7 @@ const Home = () => {
 
   return (
     <StyledDiv>
-      <div className="min-vh-100 d-flex align-items-center" style={{ backgroundImage: 'url(/img/test.jpg)',
-        backgroundSize: 'cover' }}>
+      <div className="min-vh-100 d-flex align-items-center" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/img/home.jpg)', backgroundSize: 'cover' }}>
         <div className="container">
               <div className="row">
                 <div className="offset-lg-3 col-lg-6 col-12">
