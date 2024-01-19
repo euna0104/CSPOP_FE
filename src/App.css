@@ -1,4 +1,15 @@
 @font-face {
-	font-family: 'Nanum Gothic';
+	font-family: 'NanumGothicBold';
 	src: url("./fonts/NanumGothicBold.otf");
+}
+@font-face {
+	font-family: 'NanumGothic';
+	src: url("./fonts/NanumGothic.otf");
+}
+
+.btn-primary {
+    --bs-btn-bg: #ff5938 !important;
+    --bs-btn-border-color: #ff5938 !important;
+    --bs-btn-hover-bg: #f44336 !important;
+    --bs-btn-hover-border-color: #f44336 !important;
 }
