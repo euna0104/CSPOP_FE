@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -41,11 +42,6 @@ const Home = () => {
     .bg-home {
         --bs-bg-opacity: 1;
         background-color: rgb(38,31,68);
-    }
-    .btn-primary {
-        background-color: #ff5938;
-        border-color: #ff5938;
-        color: #fff;
     }
     .btn {
         border: 1px solid transparent;
