@@ -27,7 +27,7 @@ const Header = () => {
     <div className="header position-sticky border-3 border-top border-primary bg-dark">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-default">
-          <a className="navbar-brand" onClick={handleHomeClick}>
+          <a href="/api/home" className="navbar-brand">
             <img src="/img/cspop_logo.png" width="110" height="40" alt="" />
           </a>
           <div className="collapse navbar-collapse" id="navbar-default">
