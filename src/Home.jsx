@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Home = () => {
   const StyledDiv = styled.div`
-    font-family: 'Nanum Gothic';
+    font-family: 'NanumGothic';
 
     .p-lg-8 {
         padding: 3.5rem!important;
@@ -56,6 +56,9 @@ const Home = () => {
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         user-select: none;
         vertical-align: middle;
+    }
+    .title {
+      font-family: "NanumGothicBold";
     }
   `;
 
@@ -111,7 +114,7 @@ const Home = () => {
                   </a>
                   <div className="bg-home p-4 p-lg-8 rounded-3">
                     <form>
-                      <h2 className="mb-3 text-white font-weight-bold">경기대학교 졸업시스템</h2>
+                      <h2 className="mb-3 text-white font-weight-bold title">경기대학교 졸업시스템</h2>
                       <div className="mb-3">
                         <label htmlFor="email" className="form-label text-white-50">
                           경기대학교 컴퓨터공학부 학생들을 위한 졸업시스템입니다.
