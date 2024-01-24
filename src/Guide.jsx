@@ -19,7 +19,7 @@ const Guide = ({ userId }) => {
   }, []);
 
   const StyledDiv = styled.div`
-    font-family: 'NanumGothicBold';
+    font-family: 'NanumGothic';
 
     .bg-dark {
       --bs-bg-opacity: 1;
@@ -49,8 +49,8 @@ const Guide = ({ userId }) => {
       margin-right: calc(var(--bs-gutter-x)*-.5);
       margin-top: calc(var(--bs-gutter-y)*-1);
     }
-    .font {
-      font-family: "NanumGothic";
+    .title {
+      font-family: "NanumGothicBold";
     }
   `;
 
@@ -63,7 +63,7 @@ const Guide = ({ userId }) => {
             <div className="row">
               <div className="col-xl-12 col-lg-12 col-md-12 col-12">
                 <div className="py-lg-14 py-12 text-center mb-4" style={{ padding: '50px 0' }}>
-                  <h6 className="text-white display-4 mb-3">안내 및 내규</h6>
+                  <h6 className="text-white display-4 mb-3 title">안내 및 내규</h6>
                 </div>
               </div>
             </div>
@@ -73,16 +73,16 @@ const Guide = ({ userId }) => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 col-md-12 col-12">
-                <p className="mb-4 font">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Stress, for the United States element ante. Duis cursus, mi quis viverra ornare, eros pain, sometimes none at all, freedom of the living creature was as the profit and financial security. Jasmine neck adapter and just running it lorem makeup sad smile of the television set.</p>
+                <p className="mb-4">{data.text}</p>
               </div>
             </div>
           </div>
           <div className="d-flex justify-content-end">
-            {/*}{userId && userId.includes('admin') && (*/}
+            {userId && userId.includes('admin') && (
               <Link to={`modifyGuide/${data.id}`} className="btn btn-primary text-white float-right">
                 수정
               </Link>
-            {/*)}*/}
+            )}
           </div>
         </div>
       </div>

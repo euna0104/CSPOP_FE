@@ -6,11 +6,13 @@ const Header = () => {
   const navigate = useNavigate();
 
   const StyledDiv = styled.div`
-      .bg-dark {
-        --bs-bg-opacity: 1;
-        background-color: rgb(38,31,68) !important;
-      }
-    `;
+    font-family: 'NanumGothicBold';
+
+    .bg-dark {
+      --bs-bg-opacity: 1;
+      background-color: rgb(38,31,68) !important;
+    }
+  `;
 
   const handleHomeClick = () => {
     navigate('/api/home');

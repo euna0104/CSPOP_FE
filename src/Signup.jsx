@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components';
 
 const SignUp = () => {
     const [isCheckedId, setIsCheckedId] = useState(0);
@@ -17,6 +18,13 @@ const SignUp = () => {
     const [answerPw, setAnswerPw] = useState('');
     const navigate = useNavigate();
 
+    const StyledDiv = styled.div`
+      font-family: 'NanumGothic';
+
+      .title {
+        font-family: 'NanumGothicBold';
+      }
+    `;
 
     // 학과 선택
     const majorOptions = () => {
@@ -188,6 +196,7 @@ const SignUp = () => {
     };
 
     return (
+      <StyledDiv>
         <div className="bg-light">
             {/* content section */}
             <div className="d-flex align-items-center position-relative min-vh-100">
@@ -200,7 +209,7 @@ const SignUp = () => {
                             <br />
                             {/* Form */}
                             <form onSubmit={handleSignUp} className="bg-white p-4 p-xl-6 p-xxl-8 p-lg-4 rounded-3 border" style={{ maxWidth: "500px", margin: "0 auto" }}>
-                                <h1 className="mb-2 text-center h3">회원가입</h1>
+                                <h1 className="mb-2 text-center h3 title">회원가입</h1>
                                 <br />
                                 <div className="mb-3">
                                     <div className="">
@@ -377,6 +386,7 @@ const SignUp = () => {
                 </div>
             </div>
         </div>
+      </StyledDiv>
     );
 };
 
