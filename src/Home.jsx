@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -123,12 +123,12 @@ const Home = () => {
                           Graduation Start
                         </button>
                       </div>
-                      <div className="d-lg-flex justify-content-between mt-4 mb-3">
+                      <div className="d-lg-flex justify-content-end mt-4 mb-3">
                         <p className="text-muted font-14">
-                          <a href="signup.html">Sign up</a>
+                          <Link to="/api/Signup" style={{ textDecoration: 'none' }}>Sign up</Link>&nbsp;&nbsp;&nbsp;
                         </p>
                         <p className="font-14">
-                          <a href="password-reset.html">Forget Password</a>
+                          <Link to="/api/login" style={{ textDecoration: 'none' }}>Login</Link>
                         </p>
                       </div>
                     </form>
