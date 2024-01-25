@@ -94,10 +94,10 @@ const Schedule = () => {
                       <tbody>
                         {schedules.map((data, index) => (
                           <tr key={index}>
-                            <td>{data.step}</td>
-                            <td>{data.startDate}</td>
-                            <td>{data.endDate}</td>
-                            <td>{data.scheduleState}</td>
+                            <td className="align-middle">{data.step}</td>
+                            <td className="align-middle">{data.startDate}</td>
+                            <td className="align-middle">{data.endDate}</td>
+                            <td className="align-middle">{data.scheduleState}</td>
                           </tr>
                         ))}
                       </tbody>

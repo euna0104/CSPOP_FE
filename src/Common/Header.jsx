@@ -1,28 +1,23 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 
+const StyledDiv = styled.div`
+  font-family: 'NanumGothicBold';
+
+  .bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: rgb(38,31,68) !important;
+  }
+`;
+
+const linkStyles = {
+  color: 'white',
+  fontWeight: 'bold',
+  fontSize: '18px'
+};
+
 const Header = () => {
-  const navigate = useNavigate();
-
-  const StyledDiv = styled.div`
-    font-family: 'NanumGothicBold';
-
-    .bg-dark {
-      --bs-bg-opacity: 1;
-      background-color: rgb(38,31,68) !important;
-    }
-  `;
-
-  const handleHomeClick = () => {
-    navigate('/api/home');
-  };
-
-  const linkStyles = {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '18px'
-  };
 
   return (
     <StyledDiv>
@@ -34,22 +29,22 @@ const Header = () => {
           </a>
           <div className="collapse navbar-collapse" id="navbar-default">
             <ul className="navbar-nav mx-auto">
-              <li class="nav-item bold">
+              <li className="nav-item bold">
                 <Link to="/api/noticeboards" className="nav-link" style={linkStyles}>
                   공지사항
                 </Link>
               </li>
-              <li class="nav-item bold">
+              <li className="nav-item bold">
                 <Link to="/api/graduation/guide" className="nav-link" style={linkStyles}>
                   안내및내규
                 </Link>
               </li>
-              <li class="nav-item bold">
+              <li className="nav-item bold">
                 <Link to="/api/graduation/schedule" className="nav-link" style={linkStyles}>
                   진행일정
                 </Link>
               </li>
-              <li class="nav-item bold">
+              <li className="nav-item bold">
                 <Link to="/api/graduation/graduate_management" className="nav-link" style={linkStyles}>
                   졸업자조회
                 </Link>
