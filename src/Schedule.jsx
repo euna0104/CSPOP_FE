@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from './Common/Header';
@@ -17,6 +17,7 @@ const StyledDiv = styled.div`
   .bg-shape {
     position: relative;
     height: 200px;
+    margin-bottom: 30px;
   }
   .bg-shape:after {
     background:url(/img/curve-shape.svg);
@@ -31,6 +32,9 @@ const StyledDiv = styled.div`
   .title {
     margin-right: 190px;
     font-family: "NanumGothicBold";
+  }
+  .bg-light th {
+    background-color: #eae9ec;
   }
 `;
 
