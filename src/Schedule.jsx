@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from './Common/Header';
@@ -36,10 +36,42 @@ const StyledDiv = styled.div`
   .bg-light th {
     background-color: #eae9ec;
   }
+  .btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+  }
+
+  .modal-open-button, .modal-close-btn {
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    background-color: #ffffff;
+    width: 250px;
+    height: 150px;
+    padding: 15px;
+  }
 `;
 
 const Schedule = () => {
   const [schedules, setSchedules] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const modalBackground = useRef();
+
 
   useEffect(() => {
     const getData = async () => {
@@ -106,6 +138,26 @@ const Schedule = () => {
                 </div>
               </div>
             </div>
+            <div className={'btn-wrapper'}>
+                    <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}>
+                      모달 열기
+                    </button>
+                  </div>
+                  {
+                    modalOpen &&
+                    <div className={'modal-container'} ref={modalBackground} onClick={e => {
+                      if (e.target === modalBackground.current) {
+                        setModalOpen(false);
+                      }
+                    }}>
+                      <div className={'modal-content'}>
+                        <p>리액트로 모달 구현하기</p>
+                        <button className={'modal-close-btn'} onClick={() => setModalOpen(false)}>
+                          모달 닫기
+                        </button>
+                      </div>
+                    </div>
+                  }
           </div>
         </div>
       </div>
