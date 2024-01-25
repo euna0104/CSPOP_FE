@@ -39,6 +39,20 @@ const StyledDiv = styled.div`
 `;
 
 const Schedule = () => {
+  const [schedules, setSchedules] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get('/api/schedules');
+        setSchedules(response.data);
+      } catch (error) {
+        console.error('진행일정 데이터를 가져오지 못했습니다.', error);
+      }
+    }
+    getData()
+  }, []);
+
   return (
     <StyledDiv>
       <div>
@@ -78,22 +92,14 @@ const Schedule = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>e5BZptmrBl</td>
-                          <td>2021-12-07</td>
-                          <td>
-                            American Express ending in 1234
-                          </td>
-                          <td>$5.00</td>
-                        </tr>
-                        <tr>
-                          <td className="align-middle">4aS1taQR4F</td>
-                          <td className="align-middle">2021-11-07</td>
-                          <td className="align-middle">
-                            American Express ending in 1234
-                          </td>
-                          <td className="align-middle">$5.00</td>
-                        </tr>
+                        {schedules.map((data, index) => (
+                          <tr key={index}>
+                            <td>{data.step}</td>
+                            <td>{data.startDate}</td>
+                            <td>{data.endDate}</td>
+                            <td>{data.scheduleState}</td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
