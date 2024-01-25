@@ -79,17 +79,12 @@ const Schedule = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="align-middle">e5BZptmrBl</td>
-                          <td className="align-middle">2021-12-07</td>
-                          <td className="align-middle">
+                          <td>e5BZptmrBl</td>
+                          <td>2021-12-07</td>
+                          <td>
                             American Express ending in 1234
                           </td>
-                          <td className="align-middle">$5.00</td>
-                          <td className="align-middle">
-                            <a href="#">
-                              <i className="fe fe-download"></i>
-                            </a>
-                          </td>
+                          <td>$5.00</td>
                         </tr>
                         <tr>
                           <td className="align-middle">4aS1taQR4F</td>
@@ -98,11 +93,6 @@ const Schedule = () => {
                             American Express ending in 1234
                           </td>
                           <td className="align-middle">$5.00</td>
-                          <td className="align-middle">
-                            <a href="#">
-                              <i className="fe fe-download"></i>
-                            </a>
-                          </td>
                         </tr>
                       </tbody>
                     </table>
