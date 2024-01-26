@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import './App.css'
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from './Common/Header';
@@ -139,8 +140,8 @@ const Schedule = () => {
               </div>
             </div>
             <div className={'btn-wrapper'}>
-                    <button className={'modal-open-btn'} onClick={() => setModalOpen(true)}>
-                      모달 열기
+                    <button className="btn btn-primary text-white" onClick={() => setModalOpen(true)}>
+                      수정
                     </button>
                   </div>
                   {
@@ -152,8 +153,8 @@ const Schedule = () => {
                     }}>
                       <div className={'modal-content'}>
                         <p>리액트로 모달 구현하기</p>
-                        <button className={'modal-close-btn'} onClick={() => setModalOpen(false)}>
-                          모달 닫기
+                        <button className="btn btn-primary text-white" onClick={() => setModalOpen(false)}>
+                          닫기
                         </button>
                       </div>
                     </div>
