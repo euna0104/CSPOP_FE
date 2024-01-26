@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -39,10 +39,36 @@ const StyledDiv = styled.div`
   .title {
     font-family: "NanumGothicBold";
   }
+  .modal-open-button, .modal-close-btn {
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .modal-container {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #ffffff;
+      width: 250px;
+      height: 150px;
+      padding: 15px;
+    }
 `;
 
 const Guide = ({ userId }) => {
   const [data, setData] = useState({ text: '', id: '' });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [textAreaValue, setTextAreaValue] = useState('');
+  const modalBackground = useRef();
 
   useEffect(() => {
     axios.get('/api/guidancdboards')
@@ -50,9 +76,18 @@ const Guide = ({ userId }) => {
         setData(response.data);
       })
       .catch(error => {
-        console.error('데이터 가져오기 실패:', error);
+        console.error('안내및내규 가져오기 실패:', error);
       });
   }, []);
+
+  const handleTextAreaChange = (e) => {
+    setTextAreaValue(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    // /api/admins/guidanceboards
+    setModalOpen(false);
+  };
 
   return (
     <StyledDiv>
@@ -77,13 +112,26 @@ const Guide = ({ userId }) => {
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-center">
-            {/* {userId && userId.includes('admin') && ( */}
-              <Link to={`modifyGuide/${data.id}`} className="btn btn-primary text-white">
-                수정
-              </Link>
-            {/* )} */}
+          <div className="btn-wrapper d-flex justify-content-center">
+            <button className="btn btn-primary text-white" onClick={() => setModalOpen(true)}>
+              수정
+            </button>
           </div>
+          {
+            modalOpen &&
+            <div className="modal-container" ref={modalBackground} onClick={e => {
+              if (e.target === modalBackground.current) {
+                setModalOpen(false);
+              }
+            }}>
+              <div className="modal-content">
+                <p>리액트로 모달 구현하기</p>
+                  <button className="btn btn-primary text-white" onClick={() => setModalOpen(false)}>
+                    닫기
+                  </button>
+                </div>
+              </div>
+            }
         </div>
       </div>
     </StyledDiv>
