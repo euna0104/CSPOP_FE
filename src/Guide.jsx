@@ -43,25 +43,29 @@ const StyledDiv = styled.div`
       cursor: pointer;
       margin-left: auto;
     }
-
-    .modal-container {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-content {
-      background-color: #ffffff;
-      width: 700px;
-      height: 650px;
-      padding: 15px;
-    }
+  .modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: #ffffff;
+    width: 700px;
+    height: 650px;
+    padding: 15px;
+  }
+  textarea {
+    width: 650px;
+    height: 500px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
 `;
 
 const Guide = ({ userId }) => {
@@ -145,14 +149,19 @@ const Guide = ({ userId }) => {
               }
             }}>
               <div className="modal-content">
-                <textarea
-                  value={text}
-                  onChange={handleDataChange}
-                  type="text-area"
-                />
-                <button className="btn btn-primary text-white" onClick={guidanceUpdate}>
-                  완료
-                </button>
+                <p className="d-flex justify-content-center">안내 및 내규 수정</p>
+                <div className="d-flex justify-content-center">
+                  <textarea
+                    value={text}
+                    onChange={handleDataChange}
+                    type="text-area"
+                  />
+                </div>
+                <div className="d-flex justify-content-center">
+                  <button className="btn btn-primary text-white" onClick={guidanceUpdate}>
+                    완료
+                  </button>
+                </div>
               </div>
             </div>
             }
