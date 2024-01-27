@@ -58,35 +58,55 @@ const StyledDiv = styled.div`
 
     .modal-content {
       background-color: #ffffff;
-      width: 250px;
-      height: 150px;
+      width: 700px;
+      height: 650px;
       padding: 15px;
     }
 `;
 
 const Guide = ({ userId }) => {
-  const [data, setData] = useState({ text: '', id: '' });
+  const accessToken = sessionStorage.getItem('accessToken');
+  const [data, setData] = useState({ text: '' });
   const [modalOpen, setModalOpen] = useState(false);
-  const [textAreaValue, setTextAreaValue] = useState('');
   const modalBackground = useRef();
 
-  useEffect(() => {
-    axios.get('/api/guidancdboards')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('안내및내규 가져오기 실패:', error);
-      });
-  }, []);
+  const { text } = data;
 
-  const handleTextAreaChange = (e) => {
-    setTextAreaValue(e.target.value);
+  useEffect(() => {
+    const getGuidance = async () => {
+      try {
+        const response = await axios.get(`/api/guidancdboards`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setData(response.data);
+        console.log('안내및내규를 불러왔습니다.');
+      } catch (error) {
+        console.log('안내및내규를 불러오지 못했습니다.', error);
+      }
+    };
+    getGuidance();
+  }, [accessToken]);
+
+  const handleDataChange = (e) => {
+    setData({ text: e.target.value });
   };
 
-  const handleSubmit = () => {
-    // /api/admins/guidanceboards
-    setModalOpen(false);
+  const guidanceUpdate = async () => {
+    try {
+      const response = await axios.put(`/api/admins/guidanceboards`, data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      alert('게시물이 수정되었습니다.');
+      setData(response.data);
+      setModalOpen(false);
+    } catch (error) {
+      console.error(error);
+      alert('게시물 수정에 실패하였습니다.');
+    }
   };
 
   return (
@@ -108,7 +128,7 @@ const Guide = ({ userId }) => {
           <div className="container">
             <div className="row justify-content-center">
               <div className="col-lg-8 col-md-12 col-12">
-                <p className="mb-4">{data.text}</p>
+                <p className="mb-4">{text}</p>
               </div>
             </div>
           </div>
@@ -125,12 +145,16 @@ const Guide = ({ userId }) => {
               }
             }}>
               <div className="modal-content">
-                <p>리액트로 모달 구현하기</p>
-                  <button className="btn btn-primary text-white" onClick={() => setModalOpen(false)}>
-                    닫기
-                  </button>
-                </div>
+                <textarea
+                  value={text}
+                  onChange={handleDataChange}
+                  type="text-area"
+                />
+                <button className="btn btn-primary text-white" onClick={guidanceUpdate}>
+                  완료
+                </button>
               </div>
+            </div>
             }
         </div>
       </div>
