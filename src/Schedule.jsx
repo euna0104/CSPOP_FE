@@ -69,21 +69,26 @@ const StyledDiv = styled.div`
 `;
 
 const Schedule = () => {
+  const accessToken = sessionStorage.getItem('accessToken');
   const [schedules, setSchedules] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const modalBackground = useRef();
 
-
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get('/api/schedules');
+        const response = await axios.get('/api/schedules', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
         setSchedules(response.data);
+        console.log('진행일정 데이터를 가져왔습니다.');
       } catch (error) {
         console.error('진행일정 데이터를 가져오지 못했습니다.', error);
       }
     }
-    getData()
+    getData();
   }, []);
 
   return (
@@ -139,26 +144,26 @@ const Schedule = () => {
                 </div>
               </div>
             </div>
-            <div className={'btn-wrapper'}>
-                    <button className="btn btn-primary text-white" onClick={() => setModalOpen(true)}>
-                      수정
-                    </button>
-                  </div>
-                  {
-                    modalOpen &&
-                    <div className={'modal-container'} ref={modalBackground} onClick={e => {
-                      if (e.target === modalBackground.current) {
-                        setModalOpen(false);
-                      }
-                    }}>
-                      <div className={'modal-content'}>
-                        <p>리액트로 모달 구현하기</p>
-                        <button className="btn btn-primary text-white" onClick={() => setModalOpen(false)}>
-                          닫기
-                        </button>
-                      </div>
-                    </div>
-                  }
+            <div className="btn-wrapper">
+              <button className="btn btn-primary text-white" onClick={() => setModalOpen(true)}>
+                수정
+              </button>
+            </div>
+            {
+              modalOpen &&
+              <div className="modal-container" ref={modalBackground} onClick={e => {
+                if (e.target === modalBackground.current) {
+                  setModalOpen(false);
+                }
+              }}>
+                <div className="modal-content">
+                  <p>리액트로 모달 구현하기</p>
+                  <button className="btn btn-primary text-white" onClick={() => setModalOpen(false)}>
+                    닫기
+                  </button>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>
