@@ -3,6 +3,7 @@ import './App.css'
 import styled from 'styled-components';
 import axios from 'axios';
 import Header from './Common/Header';
+import ScheduleBoard from './ScheduleBoard';
 
 const StyledDiv = styled.div`
   font-family: 'NanumGothic';
@@ -59,12 +60,14 @@ const StyledDiv = styled.div`
     align-items: center;
     background: rgba(0, 0, 0, 0.5);
   }
-
   .modal-content {
     background-color: #ffffff;
     width: 250px;
     height: 150px;
     padding: 15px;
+  }
+  .board {
+    margin-top: 50px;
   }
 `;
 
@@ -93,6 +96,9 @@ const Schedule = () => {
 
   return (
     <StyledDiv>
+      {schedules === null ? (
+        <div>로딩중..</div>
+      ) : (
       <div>
         <Header />
         <div className="bg-shape bg-dark">
@@ -167,6 +173,7 @@ const Schedule = () => {
           </div>
         </div>
       </div>
+      )}
     </StyledDiv>
   );
 };
